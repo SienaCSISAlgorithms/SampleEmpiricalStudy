@@ -51,6 +51,8 @@ public class BruteForceClosestPairs {
 	// perform the closest pairs search, measuring the time taken
 	double start = System.currentTimeMillis();
 	double closest = Double.MAX_VALUE;
+	int closest_i = -1;
+	int closest_j = -1;
 	for (int i = 0; i < a.length - 1; i++) {
 	    for (int j = i+1; j < a.length; j++) {
 		// could use distanceSq but this is more expensive and
@@ -59,11 +61,14 @@ public class BruteForceClosestPairs {
 		double d = a[i].distance(a[j]);
 		if (d < closest) {
 		    closest = d;
+		    closest_i = i;
+		    closest_j = j;
 		}
 	    }
 	}
 
 	double elapsed = System.currentTimeMillis() - start;
-	System.out.println("BFCP " + numPoints + " " + elapsed);
+	System.out.println("BFCP " + numPoints + " " + elapsed + " (" +
+			   closest_i + "," + closest_j + ") " + closest);
     }
 }
