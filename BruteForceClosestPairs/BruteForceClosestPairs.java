@@ -6,7 +6,7 @@
 
 */
 
-import java.awt.geom.Point2D.Double;
+import java.awt.geom.Point2D;
 
 public class BruteForceClosestPairs {
 
@@ -44,6 +44,26 @@ public class BruteForceClosestPairs {
 	    System.exit(1);
 	}
 							
-	
+	// set up the array
+	Point2D.Double a[] = new Point2D.Double[numPoints];
+	PopulatePointArray.randomPoints(a, range);
+
+	// perform the closest pairs search, measuring the time taken
+	double start = System.currentTimeMillis();
+	double closest = 3 * range;
+	for (int i = 0; i < a.length - 1; i++) {
+	    for (int j = i+1; j < a.length; j++) {
+		// could use distanceSq but this is more expensive and
+		// will allow meaningful timings for smaller array
+		// sizes
+		double d = a[i].distance(a[j]);
+		if (d < closest) {
+		    closest = d;
+		}
+	    }
+	}
+
+	double elapsed = System.currentTimeMillis() - start;
+	System.out.println("BFCP " + numPoints + " " + elapsed);
     }
 }
