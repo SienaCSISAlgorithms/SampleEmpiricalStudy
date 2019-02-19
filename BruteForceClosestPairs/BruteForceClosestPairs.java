@@ -50,7 +50,7 @@ public class BruteForceClosestPairs {
 
 	// perform the closest pairs search, measuring the time taken
 	double start = System.currentTimeMillis();
-	double closest = 3 * range;
+	double closest = Double.MAX_VALUE;
 	for (int i = 0; i < a.length - 1; i++) {
 	    for (int j = i+1; j < a.length; j++) {
 		// could use distanceSq but this is more expensive and
