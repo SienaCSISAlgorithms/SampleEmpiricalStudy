@@ -70,8 +70,8 @@ public class BruteForceClosestPairs {
 	}
 
 	double elapsed = System.currentTimeMillis() - start;
-	System.out.println("BFCP " + numPoints + " " + elapsed + " " +
-			   dCount + " (" +
+	System.out.println("BFCP " + numPoints + " " + range + " " +
+			   elapsed + " " + dCount + " (" +
 			   closest_i + "," + closest_j + ") " + closest);
     }
 }
